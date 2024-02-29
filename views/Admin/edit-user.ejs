@@ -1,0 +1,18 @@
+<% include('../layouts/header.ejs') %>
+
+    <h1>Edit User</h1>
+
+    <form action="" method="post">
+        <input type="hidden" name="id" value="<%= user._id %>">
+        <input type="text" name="name" placeholder="Enter  name" value="<%= user.name %>"><br><br>
+        <input type="email" name="email" placeholder="Enter email" value=" <%= user.email %>"><br><br>
+        <input type="number" name="mno" placeholder="Enter mobile number" value="<%= user.mobile %>"><br><br>
+        <label>Verified</label>
+        <input type="radio" name="verify" value="1" <% if(user.is_varified==1){%> checked <%}%>>
+        <label>Unverified</label>
+        <input type="radio" name="verify" value="0" <% if(user.is_varified==0){%> checked <%}%>><br><br>
+        <input type="submit" value="Update User">
+    </form>
+    <a href="/admin/">Go Back</a>
+    
+    <% include('../layouts/footer.ejs') %>

@@ -1,0 +1,17 @@
+<% include('../layouts/header.ejs') %>
+    <h1>Hello! <h3>Welcome , <%= user.name %>
+        </h3>
+    </h1>
+    <img src="userImage/<%= user.image %>" width="100px" height="100px" alt="<%= user.image %>">
+    <form action="/edit" method="post" enctype="multipart/form-data">
+        <input type="file" name="image">
+        <br><br>
+        <input type="hidden" name="user_id" value="<%= user._id %>">
+        <input type="text" name="name" value="<%= user.name %>" placeholder="Enter your name" required><br><br>
+        <input type="number" name="mno" value="<%= user.mobile %>" placeholder="Enter your mobile number"
+            required><br><br>
+        <input type="email" name="email" value="<%= user.email %>" placeholder="Enter your email" required><br> <br>
+        <input type="submit" value="update Profile">
+    </form>
+
+    <% include('../layouts/footer.ejs') %>

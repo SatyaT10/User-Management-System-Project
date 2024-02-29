@@ -1,0 +1,63 @@
+<!-- <% include('../layouts/header.ejs') %> -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <h1> Dashboard </h1>
+    <a href="/admin/new-user" style="margin-right: 20px; margin-left: 50px;">Add New User</a>
+    <a href="/admin/export-user" style="margin-right: 20px; margin-left: 40px;">Download User Data</a>
+    <a href="/admin/export-user-pdf" style="margin-left: 50px;">Download User Data pdf</a><br><br>
+    <table width="50%">
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Mobile</th>
+            <th>Image</th>
+            <th>Verified</th>
+        </tr>
+        <% if (users.length>0) {
+            for (let i = 0; i < users.length; i++) { %>
+                <tr>
+                    <td>
+                        <%= users[i].name %>
+                    </td>
+                    <td>
+                        <%= users[i].email %>
+                    </td>
+                    <td>
+                        <%= users[i].mobile %>
+                    </td>
+                    <td>
+                        <img src="/userImage/<%= users[i].image %>" alt="<%= users[i].image %>" width="100px"
+                            height="100px" style="border-radius: 50%;">
+                    </td>
+                    <td>
+                        <% if (users[i].is_varified===1) { %>
+                            <p>Verified</p>
+                            <% } else { %>
+                                <p>Not Verified</p>
+                                <% } %>
+                    </td>
+                    <td>
+                        <a href="/admin/edit-user?id=<%= users[i]._id %>">Edit</a><br>
+                        <a href="/admin/delete-user?id=<%= users[i]._id %>">Delete</a>
+                    </td>
+
+                </tr>
+
+                <% } } else { %>
+                    <tr>
+                        <td colspan="5">Users Not Found
+                        </td>
+                    </tr>
+                    <% } %>
+    </table>
+    <br>
+    <a href="/admin/home">Go back</a>
+
+<% include('../layouts/footer.ejs') %>

@@ -1,0 +1,41 @@
+<h1>Users List</h1>
+<table width="100%">
+    <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Mobile</th>
+        <th>Image</th>
+        <th>Verified</th>
+    </tr>
+    <% if (users.length>0) {
+        for (let i = 0; i < users.length; i++) { %>
+            <tr>
+                <td>
+                    <%= users[i].name %>
+                </td>
+                <td>
+                    <%= users[i].email %>
+                </td>
+                <td>
+                    <%= users[i].mobile %>
+                </td>
+                <td>
+                    <img src="http://127.0.0.1:3000/userImage/<%= users[i].image %>" alt="<%= users[i].image %>" width="100px" height="100px"
+                        style="border-radius: 50%;">
+                </td>
+                <td>
+                    <% if (users[i].is_varified===1) { %>
+                        <p>Verified</p>
+                        <% } else { %>
+                            <p>Not Verified</p>
+                            <% } %>
+                </td>
+            </tr>
+
+            <% } } else { %>
+                <tr>
+                    <td colspan="5">Users Not Found
+                    </td>
+                </tr>
+                <% } %>
+</table>

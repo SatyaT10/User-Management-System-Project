@@ -1,0 +1,32 @@
+<!-- <h1>Add new Users</h1> -->
+
+
+<% include('../layouts/header.ejs') %>
+<h2>New Users Registrations Page</h2>
+<form method="post" enctype="multipart/form-data">
+
+<input type="text" name="name" placeholder="Enter name" required>
+<br><br>
+<input type="email" name="email" placeholder="Enter email" required>
+<br><br>
+<input type="text" name="mno" placeholder="Enter mobile" required>
+<br><br>
+<input type="file" name="image"  required>
+<br><br>
+<input type="submit" value="Add New user">
+</form>
+
+
+<% 
+    if(typeof message !== 'undefined'){
+    %>
+    <p style="color: red;"><%= message %></p>
+    <%
+
+    }
+
+%>
+
+<a href="/admin/dashboard">Go back</a>
+
+<% include('../layouts/footer.ejs') %>
